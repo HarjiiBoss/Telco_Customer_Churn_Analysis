@@ -206,4 +206,4 @@ A `Data_Dictionary` sheet will be added in Phase 9 to document all key columns a
 ---
 
 **Status:** Phase 2 complete — structured Excel environment ready for KPI design and analysis.  
-*Project 4: Telco Customer Churn Analysis — Framework: Customer · Revenue · Risk*
+*Project 7: Telco Customer Churn Analysis — Framework: Customer · Revenue · Risk*

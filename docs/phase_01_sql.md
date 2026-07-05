@@ -366,4 +366,4 @@ All computations are performed in MySQL, with Excel receiving only clean, analys
 ---
 
 **Status:** Phase 1 complete — SQL analysis delivers structured insights across customer behaviour, revenue exposure, and structural risk.  
-*Project 4: Telco Customer Churn Analysis — Framework: Customer · Revenue · Risk*
+*Project 7: Telco Customer Churn Analysis — Framework: Customer · Revenue · Risk*

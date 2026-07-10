@@ -88,7 +88,7 @@ A plain formatted reference block — not a table. Sits at the top of the sheet 
 
 ---
 
-## Referencing Approach
+## Data Lineage & Referencing
 
 **Fixed columns (typed manually):**
 - Pillar, Segment Type, Contract, Churn Status — analytical additions not in source tables

@@ -211,10 +211,10 @@ Identify the customer segments most likely to churn and explain the behavioural 
 
 ### KPI Cards
 
+- Overall Churn Rate
 - Month-to-Month Churn Rate
 - Early Tenure Churn Rate
 - Average Tenure (Churned)
-- Electronic Check Churn Rate
 
 ### Supporting Charts
 
@@ -254,7 +254,6 @@ Measure the financial impact of customer churn by analysing revenue exposure, cu
 - Monthly Revenue at Risk
 - Revenue at Risk (%)
 - Average Monthly Charge (Churned)
-- Annualised Revenue at Risk
 
 ### Supporting Charts
 
@@ -293,7 +292,6 @@ Identify structural business risks by analysing customer concentration, revenue 
 - Month-to-Month Revenue Share
 - Fiber Revenue Share
 - High-Risk Customer Count
-- High-Risk Customer Churn Rate
 
 ### Supporting Charts
 

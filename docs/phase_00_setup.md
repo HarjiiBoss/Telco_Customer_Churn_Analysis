@@ -1,4 +1,4 @@
-# Phase 0 — Environment Setup
+# Phase 0 — Environment Setup & Data Preparation
 
 **Tool:** MySQL Workbench (Local Instance 3306)
 
@@ -10,7 +10,7 @@ Set up the MySQL environment, create the project schema, import the Telco Custom
 
 ---
 
-## Steps Completed
+## Implementation Steps
 
 ### 1. Connection Verified
 

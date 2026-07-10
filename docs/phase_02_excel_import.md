@@ -1,4 +1,4 @@
-# Phase 2 — Excel Import & Validation
+# Phase 2 — Excel Data Model & Validation
 
 **Tool:** Microsoft Excel (Mac)
 **Workbook:** `Telco_Churn_Analysis.xlsx`

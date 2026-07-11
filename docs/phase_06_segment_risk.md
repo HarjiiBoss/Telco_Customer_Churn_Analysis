@@ -1,9 +1,9 @@
 # Phase 6 — Segment & Concentration Risk Analysis
 
-**Tool:** Microsoft Excel (Mac)
-**Sheet:** `Segment_Risk`
-**Tables:** `tbl_ContractConcentrationRisk` · `tbl_InternetServiceRisk` · `tbl_HighRiskProfile`
-**Charts Built:** 3
+**Tool:** Microsoft Excel (Mac)  
+**Sheet:** `Segment_Risk`  
+**Tables:** `tbl_ContractConcentrationRisk` · `tbl_InternetServiceRisk` · `tbl_HighRiskProfile`  
+**Charts Built:** 3  
 **Status:** Complete ✅
 
 ---
@@ -187,5 +187,5 @@ Fiber optic is the highest revenue concentration risk but it's not a binary high
 
 ---
 
-**Status:** Phase 6 complete — Risk pillar analytical layer built and validated.
+**Status:** Phase 6 complete — Risk pillar analytical layer built and validated.  
 *Project 7: Telco Customer Churn Analysis — Framework: Customer · Revenue · Risk*

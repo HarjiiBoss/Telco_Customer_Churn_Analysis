@@ -1,4 +1,4 @@
--- Project 4: Telco Customer Churn Analysis
+-- Project 7: Telco Customer Churn Analysis
 -- Phase 1A: Exploratory Queries
 -- Purpose: Understand data quality and baseline metrics before analysis
 

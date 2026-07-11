@@ -193,5 +193,5 @@ Gold signals the primary finding — the segment that drives the story in each c
 
 ---
 
-**Status:** Phase 4 complete — Customer pillar analytical layer built and validated.
+**Status:** Phase 4 complete — Customer pillar analytical layer built and validated.  
 *Project 7: Telco Customer Churn Analysis — Framework: Customer · Revenue · Risk*

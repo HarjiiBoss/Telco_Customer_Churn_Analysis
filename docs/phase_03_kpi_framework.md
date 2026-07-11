@@ -1,9 +1,9 @@
 # Phase 3 — KPI Design & Framework
 
-**Tool:** Microsoft Excel (Mac)
-**Sheet:** `KPI_Framework`
-**KPIs Defined:** 10
-**Pillars:** Customer · Revenue · Risk
+**Tool:** Microsoft Excel (Mac)  
+**Sheet:** `KPI_Framework`  
+**KPIs Defined:** 10  
+**Pillars:** Customer · Revenue · Risk  
 **Status:** Complete ✅
 
 ---

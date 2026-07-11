@@ -1,4 +1,4 @@
--- Project 4: Telco Customer Churn Analysis
+-- Project 7: Telco Customer Churn Analysis
 -- Phase 1C: Revenue Pillar
 -- Purpose: Quantify revenue at risk and identify where revenue is concentrated
 

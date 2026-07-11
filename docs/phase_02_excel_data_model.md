@@ -2,8 +2,8 @@
 
 **Tool:** Microsoft Excel (Mac)
 **Workbook:** `Telco_Churn_Analysis.xlsx`
-**Sheets Created:** 19 (Dashboard + KPI_Framework + 17 data sheets)
-**Tables Created:** 17
+**Sheets Created:** 25 (Main Dashboard + 3 Supporting Dashboard + KPI_Framework + 20 data sheets)
+**Tables Created:** 24
 **Status:** Complete ✅
 
 ---

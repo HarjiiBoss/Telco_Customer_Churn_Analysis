@@ -159,7 +159,7 @@ Workbook structured by analytical pillar:
 
 ## Planned Next Layer (Phase 4–6)
 
-Intermediate analysis sheets will be created:
+Intermediate analysis will be created:
 
 - `Churn_Analysis`
 - `Revenue_Stability`
@@ -170,22 +170,6 @@ These will:
 - Combine multiple SQL tables
 - Support KPI calculation and dashboard visuals
 - Avoid duplication of SQL logic
-
----
-
-## Data Dictionary
-
-A `Data_Dictionary` sheet will be added in Phase 9 to document all key columns across every table. It will follow this structure:
-
-| Table | Column | Description |
-|---|---|---|
-| tbl_ChurnByContract | Churn Rate (%) | Percentage of customers who churned within each contract type |
-| tbl_RevenueAtRisk | Monthly Revenue Lost (£) | Total monthly charges from customers who have churned |
-| tbl_HighRiskCustomers | Risk Segment | Customer flagged as High Risk if: Month-to-month + MonthlyCharges >£70 + tenure <12 months |
-| tbl_CohortLagAnalysis | Change (pp) | Percentage point change in churn rate vs previous tenure cohort |
-| tbl_EstimatedLTV | Estimated LTV (£) | Proxy LTV calculated as Avg Tenure × Avg Monthly Charge per segment |
-
-> Full data dictionary to be completed in Phase 9 documentation.
 
 ---
 

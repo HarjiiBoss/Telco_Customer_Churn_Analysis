@@ -182,5 +182,5 @@ The KPI framework establishes a **single, traceable, and analysis-ready metric l
 
 ---
 
-**Status:** Phase 3 complete — KPI framework established as the central analytical layer of the project.
+**Status:** Phase 3 complete — KPI framework established as the central analytical layer of the project.  
 *Project 7: Telco Customer Churn Analysis — Framework: Customer · Revenue · Risk*

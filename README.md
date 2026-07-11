@@ -696,7 +696,7 @@ Excel served as the presentation and dashboard layer of the project.
 # 📁 Repository Structure
 
 ```text
-project-4-telco-churn/
+Telco_Customer_Churn_Analysis/
 │
 ├── data/
 │   ├── churn_by_contract.csv
@@ -717,7 +717,7 @@ project-4-telco-churn/
 │   ├── cohort_lag_analysis.csv
 │   └── perfect_storm_churn.csv
 │
-├── images/
+├── dashboard/
 │   ├── 01_executive_summary_dashboard.png
 │   ├── 02_customer_dashboard.png
 │   ├── 03_revenue_dashboard.png
@@ -731,7 +731,7 @@ project-4-telco-churn/
 │   ├── 01d_risk.sql
 │   └── 01e_advanced.sql
 │
-├── documentation/
+├── doc/
 │   ├── Phase_0_Environment_Setup.md
 │   ├── Phase_1_SQL_Extraction_Analysis.md
 │   ├── Phase_2_Excel_Import_Validation.md
@@ -746,6 +746,7 @@ project-4-telco-churn/
 │
 ├── Telco_Churn_Analysis.xlsx
 ├── README.md
+├── DATA_DICTIONARY.md 
 └── LICENSE
 ```
 

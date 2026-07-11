@@ -1,9 +1,9 @@
 # Phase 5 — Revenue Stability Analysis
 
-**Tool:** Microsoft Excel (Mac)
-**Sheet:** `Revenue_Stability`
-**Tables:** `tbl_RevenueByContractAnalysis` · `tbl_RevenueByTierAnalysis` · `tbl_EstimatedLTVAnalysis`
-**Charts Built:** 3
+**Tool:** Microsoft Excel (Mac)  
+**Sheet:** `Revenue_Stability`  
+**Tables:** `tbl_RevenueByContractAnalysis` · `tbl_RevenueByTierAnalysis` · `tbl_EstimatedLTVAnalysis`  
+**Charts Built:** 3  
 **Status:** Complete ✅
 
 ---

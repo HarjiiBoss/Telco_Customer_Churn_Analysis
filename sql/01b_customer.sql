@@ -1,4 +1,4 @@
--- Project 4: Telco Customer Churn Analysis
+-- Project 7: Telco Customer Churn Analysis
 -- Phase 1B: Customer Pillar
 -- Purpose: Identify who is churning and which segments are most at risk
 

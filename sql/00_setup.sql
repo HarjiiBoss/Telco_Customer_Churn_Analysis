@@ -1,4 +1,4 @@
--- Project 4: Telco Customer Churn Analysis
+-- Project 7: Telco Customer Churn Analysis
 -- Phase 0: Environment Setup
 -- Tool: MySQL Workbench
 

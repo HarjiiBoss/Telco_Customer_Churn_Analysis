@@ -19,7 +19,7 @@ Import SQL-exported CSVs into Excel as structured tables, validate data integrit
 ### Step 1 — Workbook Created
 
 - New Excel workbook created and saved as `Telco_Churn_Analysis.xlsx`
-- Stored within project folder: `project-4-telco-churn/`
+- Stored within project folder: `project-7-telco-churn/`
 - Default sheet renamed to `Dashboard` and set as the opening view
 
 ---

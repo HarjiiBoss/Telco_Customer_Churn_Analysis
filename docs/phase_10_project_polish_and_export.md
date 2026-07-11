@@ -110,15 +110,16 @@ The repository structure was reviewed to ensure clarity, consistency, and ease o
 ## Folder Structure
 
 ```text
-project-4-telco-churn/
+Telco_Customer_Churn_Analysis/
 │
 ├── data/
-├── documentation/
-├── images/
+├── doc/
+├── dashboard/
 ├── sql/
 │
 ├── Telco_Churn_Analysis.xlsx
 ├── README.md
+├── DATA_DICTIONARY.md
 ├── LICENSE
 └── .gitignore
 ```

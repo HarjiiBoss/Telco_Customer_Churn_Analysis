@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Taofeek Salami — Telco Customer Churn Analysis</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0d0f14;
+      --surface: #13161e;
+      --surface2: #1a1e28;
+      --border: #252a38;
+      --accent: #c8a96e;
+      --accent2: #b48ecf;
+      --text: #e8e4dc;
+      --muted: #7a7f8e;
+      --green: #6dbf8a;
+      --red: #e07b6a;
+      --purple: #b48ecf;
+      --blue: #7eb8c9;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ── HERO ── */
+    header {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 8vw 4rem;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      top: -10%;
+      right: -5%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(180,142,207,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    h1 .accent { color: var(--accent); }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+
+    .meta-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .meta-value {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--accent);
+    }
+
+    .hero-bio {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.6s 0.35s ease both;
+    }
+
+    .badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+      border: 1px solid;
+    }
+
+    .badge-sql     { color: var(--accent); border-color: rgba(200,169,110,0.3); background: rgba(200,169,110,0.07); }
+    .badge-mysql   { color: var(--blue);   border-color: rgba(126,184,201,0.3); background: rgba(126,184,201,0.07); }
+    .badge-excel   { color: #7bc47f;       border-color: rgba(123,196,127,0.3); background: rgba(123,196,127,0.07); }
+    .badge-complete{ color: var(--green);  border-color: rgba(109,191,138,0.3); background: rgba(109,191,138,0.07); }
+
+    .hero-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.4s ease both;
+    }
+
+    .hero-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.2s;
+    }
+
+    .hero-link::before { content: '→'; color: var(--accent); }
+    .hero-link:hover { color: var(--accent); }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 8vw;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      animation: fadeUp 0.6s 0.6s ease both;
+    }
+
+    .scroll-hint::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--muted);
+    }
+
+    /* ── LAYOUT ── */
+    main { position: relative; z-index: 1; }
+    section { padding: 5rem 8vw; border-top: 1px solid var(--border); }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+
+    /* ── KPI GRID ── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+
+    .kpi-card {
+      background: var(--surface);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .kpi-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .kpi-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .kpi-value.danger  { color: var(--red); }
+    .kpi-value.warning { color: #e8a87c; }
+    .kpi-value.good    { color: var(--green); }
+
+    .kpi-context {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--muted);
+    }
+
+    /* ── DASHBOARD PREVIEW ── */
+    .dashboard-wrap {
+      border: 1px solid var(--border);
+      overflow: hidden;
+      margin-bottom: 0.6rem;
+    }
+
+    .dashboard-wrap img {
+      width: 100%;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .dashboard-wrap:hover img { transform: scale(1.01); }
+
+    .dashboard-caption {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-align: center;
+      padding: 0.8rem;
+      border: 1px solid var(--border);
+      border-top: none;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── FINDINGS ── */
+    .findings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .finding-card {
+      background: var(--surface);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .finding-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--accent2);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .finding-card:hover { background: var(--surface2); }
+    .finding-card:hover::before { transform: scaleX(1); }
+
+    .finding-category {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .finding-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .finding-body {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .finding-body strong { color: var(--accent); font-weight: 500; }
+    .finding-body .danger { color: var(--red); font-weight: 500; }
+    .finding-body .good   { color: var(--green); font-weight: 500; }
+
+    .finding-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--border);
+      line-height: 1;
+      margin-top: auto;
+    }
+
+    /* ── INSIGHTS (Recommendations) ── */
+    .insights-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .insight-item {
+      background: var(--surface);
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: 2rem;
+      transition: background 0.2s;
+    }
+
+    .insight-item:hover { background: var(--surface2); }
+
+    .insight-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .insight-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .insight-category {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .insight-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 0.8rem;
+    }
+
+    .insight-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .insight-text strong { color: var(--accent); font-weight: 500; }
+    .insight-text .danger { color: var(--red); font-weight: 500; }
+    .insight-text .good   { color: var(--green); font-weight: 500; }
+
+    /* ── PROCESS ── */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .process-card {
+      background: var(--surface);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      transition: background 0.2s;
+    }
+
+    .process-card:hover { background: var(--surface2); }
+
+    .process-phase {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .process-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .process-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── DATA NOTE ── */
+    .data-note {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--red);
+      padding: 1.5rem 2rem;
+      margin-top: 2rem;
+    }
+
+    .data-note-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.5rem;
+    }
+
+    .data-note p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── DELIVERABLE ── */
+    .deliverable-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent2);
+      padding: 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.2s;
+    }
+
+    .deliverable-card:hover { background: var(--surface2); }
+
+    .deliverable-icon {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--accent2);
+      line-height: 1;
+    }
+
+    .deliverable-content { flex: 1; }
+
+    .deliverable-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 0.5rem;
+    }
+
+    .deliverable-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .deliverable-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .deliverable-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: gap 0.2s;
+    }
+
+    .deliverable-link:hover { gap: 0.8rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 8vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-name { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--accent); }
+    .footer-links { display: flex; gap: 1.5rem; }
+
+    .footer-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover { color: var(--accent); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 640px) {
+      .insight-item { grid-template-columns: 1fr; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<header>
+  <div class="hero-tag">SQL · MySQL · Excel · 7,043 Customers · Project 7</div>
+  <h1>Telco Customer<br/><span class="accent">Churn</span><br/>Analysis</h1>
+
+  <div class="hero-meta">
+    <div class="meta-item">
+      <span class="meta-label">Dataset</span>
+      <span class="meta-value">IBM Telco Churn · 7,043 Customers</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Tools</span>
+      <span class="meta-value">MySQL · Excel</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Focus</span>
+      <span class="meta-value">Customer · Revenue · Risk</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Completed</span>
+      <span class="meta-value">Jul 2026</span>
+    </div>
+  </div>
+
+  <p class="hero-bio">An end-to-end customer churn analytics project built entirely on MySQL and Microsoft Excel — investigating customer retention, quantifying revenue exposure, and identifying structural business risk across a three-pillar framework: Customer, Revenue, and Risk. Delivered as four interconnected executive dashboards backed by 22 SQL queries and 17 analysis-ready datasets.</p>
+
+  <div class="badge-row">
+    <span class="badge badge-sql">SQL</span>
+    <span class="badge badge-mysql">MySQL</span>
+    <span class="badge badge-excel">Excel</span>
+    <span class="badge badge-complete">Complete</span>
+  </div>
+
+  <div class="hero-links">
+    <a class="hero-link" href="https://github.com/HarjiiBoss/Telco_Customer_Churn_Analysis" target="_blank">GitHub Repo</a>
+    <a class="hero-link" href="https://harjiiboss.github.io" target="_blank">Portfolio</a>
+  </div>
+
+  <div class="scroll-hint">Scroll to explore</div>
+</header>
+
+<main>
+
+  <!-- ═══ PERFORMANCE SNAPSHOT ═══ -->
+  <section>
+    <div class="section-label reveal">Performance Snapshot</div>
+    <h2 class="reveal">Key Metrics at a Glance</h2>
+
+    <div class="kpi-grid reveal">
+      <div class="kpi-card">
+        <div class="kpi-label">Overall Churn Rate</div>
+        <div class="kpi-value danger">26.54%</div>
+        <div class="kpi-context">1,869 of 7,043 customers</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monthly Revenue Lost</div>
+        <div class="kpi-value warning">£139,131</div>
+        <div class="kpi-context">from churned customers</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Annualised Revenue at Risk</div>
+        <div class="kpi-value danger">£1.67M</div>
+        <div class="kpi-context">30.50% of total revenue</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Month-to-Month Churn</div>
+        <div class="kpi-value danger">42.71%</div>
+        <div class="kpi-context">vs. 2.8% two-year contracts</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">High-Risk Customers</div>
+        <div class="kpi-value warning">814</div>
+        <div class="kpi-context">M2M · &gt;£70/mo · &lt;12mo tenure</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">High-Risk Churn Rate</div>
+        <div class="kpi-value danger">69.53%</div>
+        <div class="kpi-context">3.3× the standard base rate</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DASHBOARD PREVIEW ═══ -->
+  <section>
+    <div class="section-label reveal">Executive Dashboards</div>
+    <h2 class="reveal">Four Dashboards, One Business Story</h2>
+    <p class="hero-bio reveal" style="margin-bottom: 2.5rem;">Built in Excel using structured tables, KPI cards, and cross-sheet referencing — SQL performs all computation, Excel presents the business insight. Each dashboard moves the reader from "what is happening?" to "where should the business act?"</p>
+
+    <div class="dashboard-wrap reveal">
+      <img src="https://raw.githubusercontent.com/HarjiiBoss/Telco_Customer_Churn_Analysis/main/dashboard/01_executive_summary_dashboard.png" alt="Executive Summary Dashboard" />
+    </div>
+    <div class="dashboard-caption reveal">01 — Executive Summary: churn, revenue at risk, and top-line risk indicators in one view</div>
+
+    <div class="dashboard-wrap reveal">
+      <img src="https://raw.githubusercontent.com/HarjiiBoss/Telco_Customer_Churn_Analysis/main/dashboard/02_customer_dashboard.png" alt="Customer Dashboard" />
+    </div>
+    <div class="dashboard-caption reveal">02 — Customer: churn by contract, tenure, internet service, and payment method</div>
+
+    <div class="dashboard-wrap reveal">
+      <img src="https://raw.githubusercontent.com/HarjiiBoss/Telco_Customer_Churn_Analysis/main/dashboard/03_revenue_dashboard.png" alt="Revenue Dashboard" />
+    </div>
+    <div class="dashboard-caption reveal">03 — Revenue: revenue at risk, customer value, and estimated lifetime value by segment</div>
+
+    <div class="dashboard-wrap reveal">
+      <img src="https://raw.githubusercontent.com/HarjiiBoss/Telco_Customer_Churn_Analysis/main/dashboard/04_risk_dashboard.png" alt="Risk Dashboard" />
+    </div>
+    <div class="dashboard-caption reveal">04 — Risk: contract dependency, service concentration, and high-risk customer profiling</div>
+  </section>
+
+  <!-- ═══ CUSTOMER FINDINGS ═══ -->
+  <section>
+    <div class="section-label reveal">Customer Pillar</div>
+    <h2 class="reveal">Who Is Churning, and Why</h2>
+
+    <div class="findings-grid reveal">
+
+      <div class="finding-card">
+        <div class="finding-category">Contract Type</div>
+        <div class="finding-title">Month-to-Month Contracts Drive Churn — 15× Higher Than Two-Year</div>
+        <div class="finding-body">Month-to-month customers churn at <span class="danger">42.71%</span>, compared to 11.3% for one-year and just 2.8% for two-year contracts. Contract flexibility is the single strongest churn signal in the dataset.</div>
+        <div class="finding-number">01</div>
+      </div>
+
+      <div class="finding-card">
+        <div class="finding-category">Tenure</div>
+        <div class="finding-title">Nearly Half of Churn Happens in the First 12 Months</div>
+        <div class="finding-body">Customers with 0–12 months tenure churn at <span class="danger">47.44%</span>, dropping to 25.5% at 13–36 months and 11.9% beyond 37 months. Early onboarding is the highest-leverage retention window.</div>
+        <div class="finding-number">02</div>
+      </div>
+
+      <div class="finding-card">
+        <div class="finding-category">Internet Service</div>
+        <div class="finding-title">Fiber Optic Customers Churn at 41.89% Despite Driving Most Revenue</div>
+        <div class="finding-body">Fiber optic churn (<span class="danger">41.89%</span>) is more than double DSL (19.0%) and far above no-internet customers (7.4%) — a service-specific retention challenge tied to the business's largest revenue source.</div>
+        <div class="finding-number">03</div>
+      </div>
+
+      <div class="finding-card">
+        <div class="finding-category">Payment Method</div>
+        <div class="finding-title">Electronic Check Is the Highest-Risk Payment Method</div>
+        <div class="finding-body">Electronic check customers churn at <span class="danger">45.29%</span> — more than 3× the churn rate of automatic payment methods (bank transfer 16.7%, credit card 15.2%), making payment type an early behavioural churn signal.</div>
+        <div class="finding-number">04</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ REVENUE FINDINGS ═══ -->
+  <section>
+    <div class="section-label reveal">Revenue Pillar</div>
+    <h2 class="reveal">What Financial Value Is Being Lost</h2>
+
+    <div class="findings-grid reveal">
+
+      <div class="finding-card">
+        <div class="finding-category">Revenue Exposure</div>
+        <div class="finding-title">30.50% of Monthly Revenue Is Tied to Churning Customers</div>
+        <div class="finding-body">Churn puts <strong>£139,131</strong> in monthly revenue — <span class="danger">£1.67M annualised</span> — at risk. Nearly one-third of recurring revenue is associated with customers who ultimately leave.</div>
+        <div class="finding-number">05</div>
+      </div>
+
+      <div class="finding-card">
+        <div class="finding-category">Customer Value</div>
+        <div class="finding-title">The Business Is Losing Its Highest-Value Customers</div>
+        <div class="finding-body">Churned customers pay <strong>£74.44/month</strong> on average versus £61.27 for retained customers — roughly <span class="danger">£13 more per month</span> walking out the door with every churned account.</div>
+        <div class="finding-number">06</div>
+      </div>
+
+      <div class="finding-card">
+        <div class="finding-category">Contract Value</div>
+        <div class="finding-title">Two-Year Contracts Generate 2.7× More Revenue per Customer</div>
+        <div class="finding-body">Average revenue per customer reaches <strong>£3,728.93</strong> on two-year contracts versus just £1,369.25 on month-to-month — despite month-to-month generating the highest total revenue through sheer customer volume.</div>
+        <div class="finding-number">07</div>
+      </div>
+
+      <div class="finding-card">
+        <div class="finding-category">Lifetime Value</div>
+        <div class="finding-title">Churned Two-Year Customers Carried 5× the LTV of Churned M2M Customers</div>
+        <div class="finding-body">Estimated LTV for churned two-year customers is <strong>£5,316.90</strong>, versus £1,023.51 for churned month-to-month customers — contract commitment is the strongest predictor of customer value retained.</div>
+        <div class="finding-number">08</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ RISK FINDINGS ═══ -->
+  <section>
+    <div class="section-label reveal">Risk Pillar</div>
+    <h2 class="reveal">Where the Business Is Structurally Exposed</h2>
+
+    <div class="findings-grid reveal">
+
+      <div class="finding-card">
+        <div class="finding-category">Contract Concentration</div>
+        <div class="finding-title">Month-to-Month Customers Generate 56.41% of Monthly Revenue</div>
+        <div class="finding-body">Month-to-month customers make up <strong>55.02%</strong> of the customer base but <span class="danger">56.41%</span> of monthly revenue — meaning over half of recurring revenue depends on the segment most likely to churn.</div>
+        <div class="finding-number">09</div>
+      </div>
+
+      <div class="finding-card">
+        <div class="finding-category">Service Concentration</div>
+        <div class="finding-title">Fiber Optic Represents the Largest Single Concentration Risk</div>
+        <div class="finding-body">Fiber optic contributes <span class="danger">62.11%</span> of monthly revenue while also recording the highest churn rate (41.89%) of any internet service — high dependency and high attrition in the same category.</div>
+        <div class="finding-number">10</div>
+      </div>
+
+      <div class="finding-card">
+        <div class="finding-category">Predictive Risk</div>
+        <div class="finding-title">814 High-Risk Customers Identified Before They Churn</div>
+        <div class="finding-body">Customers on month-to-month contracts, paying &gt;£70/month, with &lt;12 months tenure, churn at <span class="danger">69.53%</span> — more than 3× the standard customer base rate (20.92%) — and can be flagged proactively.</div>
+        <div class="finding-number">11</div>
+      </div>
+
+    </div>
+
+    <div class="data-note reveal">
+      <div class="data-note-label">Structural Flag</div>
+      <p>The business's two largest revenue sources — month-to-month contracts and fiber optic service — are also its two highest-churn segments. This concentration means retention initiatives targeted at these two groups carry disproportionate revenue protection value relative to broader, undifferentiated retention spend.</p>
+    </div>
+  </section>
+
+  <!-- ═══ RECOMMENDATIONS ═══ -->
+  <section>
+    <div class="section-label reveal">Business Recommendations</div>
+    <h2 class="reveal">Where Retention Investment Should Go</h2>
+
+    <div class="insights-list reveal">
+
+      <div class="insight-item">
+        <div class="insight-left">
+          <div class="insight-number">01</div>
+          <div class="insight-category">Onboarding</div>
+        </div>
+        <div class="insight-right">
+          <div class="insight-title">Improve Early Customer Retention</div>
+          <div class="insight-text">With <strong>47.44%</strong> of churn occurring within the first 12 months, structured onboarding programmes, first-year engagement campaigns, and early satisfaction surveys represent the highest-leverage intervention window in the customer lifecycle.</div>
+        </div>
+      </div>
+
+      <div class="insight-item">
+        <div class="insight-left">
+          <div class="insight-number">02</div>
+          <div class="insight-category">Contract Strategy</div>
+        </div>
+        <div class="insight-right">
+          <div class="insight-title">Encourage Long-Term Contract Adoption</div>
+          <div class="insight-text">Month-to-month churn (<span class="danger">42.71%</span>) is 15× that of two-year contracts. Discounted annual plans, contract upgrade incentives, and renewal promotions could shift customers toward materially lower-churn, higher-LTV agreements.</div>
+        </div>
+      </div>
+
+      <div class="insight-item">
+        <div class="insight-left">
+          <div class="insight-number">03</div>
+          <div class="insight-category">Service Quality</div>
+        </div>
+        <div class="insight-right">
+          <div class="insight-title">Investigate the Fiber Optic Customer Experience</div>
+          <div class="insight-text">Fiber optic generates <strong>62.11%</strong> of revenue while recording the highest churn rate in the dataset. A targeted review of service quality, pricing competitiveness, and support interactions is warranted given the scale of revenue dependency.</div>
+        </div>
+      </div>
+
+      <div class="insight-item">
+        <div class="insight-left">
+          <div class="insight-number">04</div>
+          <div class="insight-category">Value Protection</div>
+        </div>
+        <div class="insight-right">
+          <div class="insight-title">Target High-Value Customers Before Churn</div>
+          <div class="insight-text">Churned customers pay <strong>£13 more per month</strong> on average than retained customers. Retention campaigns should prioritise premium, long-tenure, and rising-spend customers — the segments with the greatest revenue at stake per account.</div>
+        </div>
+      </div>
+
+      <div class="insight-item">
+        <div class="insight-left">
+          <div class="insight-number">05</div>
+          <div class="insight-category">Predictive Retention</div>
+        </div>
+        <div class="insight-right">
+          <div class="insight-title">Deploy Predictive Retention Programmes</div>
+          <div class="insight-text">The 814-customer high-risk profile (M2M · &gt;£70/mo · &lt;12mo tenure, <span class="danger">69.53%</span> churn) demonstrates that at-risk customers can be identified using observable characteristics — enabling risk scoring, automated workflows, and early intervention ahead of churn.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ PROCESS ═══ -->
+  <section>
+    <div class="section-label reveal">Methodology</div>
+    <h2 class="reveal">10-Phase End-to-End Workflow</h2>
+
+    <div class="process-grid reveal">
+      <div class="process-card">
+        <div class="process-phase">Phase 0</div>
+        <div class="process-title">Environment Setup</div>
+        <div class="process-desc">Prepared the MySQL environment, imported the dataset, validated data integrity, and cleaned missing values.</div>
+      </div>
+      <div class="process-card">
+        <div class="process-phase">Phase 1</div>
+        <div class="process-title">SQL Extraction & Analysis</div>
+        <div class="process-desc">22 analytical queries answering customer, revenue, and risk business questions — CTEs, window functions, RANK, LAG, PERCENT_RANK.</div>
+      </div>
+      <div class="process-card">
+        <div class="process-phase">Phase 2</div>
+        <div class="process-title">Excel Import & Validation</div>
+        <div class="process-desc">Imported 17 SQL outputs into Excel, validated all datasets, and organised the workbook using structured tables.</div>
+      </div>
+      <div class="process-card">
+        <div class="process-phase">Phase 3</div>
+        <div class="process-title">KPI Framework Design</div>
+        <div class="process-desc">Designed a 10-metric executive KPI framework spanning Customer, Revenue, and Risk pillars.</div>
+      </div>
+      <div class="process-card">
+        <div class="process-phase">Phase 4–6</div>
+        <div class="process-title">Analytical Layers</div>
+        <div class="process-desc">Built Customer, Revenue, and Risk analytical layers — churn drivers, revenue exposure, LTV, and concentration risk.</div>
+      </div>
+      <div class="process-card">
+        <div class="process-phase">Phase 7</div>
+        <div class="process-title">Dashboard Design</div>
+        <div class="process-desc">Designed and documented four executive dashboards using a consistent navy/gold visual framework.</div>
+      </div>
+      <div class="process-card">
+        <div class="process-phase">Phase 8</div>
+        <div class="process-title">Business Insights</div>
+        <div class="process-desc">Converted analytical findings into business insights and five actionable strategic recommendations.</div>
+      </div>
+      <div class="process-card">
+        <div class="process-phase">Phase 9–10</div>
+        <div class="process-title">Documentation & Polish</div>
+        <div class="process-desc">Produced full project documentation, performed final QA, and exported dashboard assets for publication.</div>
+      </div>
+    </div>
+
+    <div class="deliverable-card reveal">
+      <div class="deliverable-icon">↗</div>
+      <div class="deliverable-content">
+        <div class="deliverable-label">Full Project Repository</div>
+        <div class="deliverable-title">Telco Customer Churn Analysis — GitHub</div>
+        <div class="deliverable-desc">Repository contains 6 SQL files (22 queries), 17 exported CSV datasets, the complete Excel workbook with four executive dashboards, and full phase-by-phase documentation.</div>
+        <a class="deliverable-link" href="https://github.com/HarjiiBoss/Telco_Customer_Churn_Analysis" target="_blank">View Repository →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <span class="footer-name">Taofeek Salami</span>
+  <div class="footer-links">
+    <a class="footer-link" href="https://linkedin.com/in/taofeek-salami-460a93245" target="_blank">LinkedIn</a>
+    <a class="footer-link" href="https://github.com/HarjiiBoss" target="_blank">GitHub</a>
+    <a class="footer-link" href="mailto:salamitaofeek92@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

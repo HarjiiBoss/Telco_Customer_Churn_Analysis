@@ -1,4 +1,4 @@
--- Project 4: Telco Customer Churn Analysis
+-- Project 7: Telco Customer Churn Analysis
 -- Phase 1E: Advanced Multi-Dimension Queries
 -- Purpose: Combine all three pillars into sophisticated multi-factor analysis
 -- SQL concepts: CTEs, window functions, ROW_NUMBER(), LAG(), RANK()

@@ -369,5 +369,5 @@ A four-dashboard executive reporting solution was successfully developed, transl
 
 ---
 
-**Status:** Phase 7 complete — executive dashboards designed, documented, validated, and ready for presentation.
+**Status:** Phase 7 complete — executive dashboards designed, documented, validated, and ready for presentation.  
 *Project 7: Telco Customer Churn Analysis — Framework: Customer · Revenue · Risk*

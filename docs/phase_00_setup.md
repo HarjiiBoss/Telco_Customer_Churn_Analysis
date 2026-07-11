@@ -132,4 +132,5 @@ WHERE TotalCharges IS NULL;
 
 ---
 
-**Status:** Phase 0 complete — dataset is clean, validated, and ready for SQL analysis in Phase 1.
+**Status:** Phase 0 complete — dataset is clean, validated, and ready for SQL analysis in Phase 1.  
+*Project 7: Telco Customer Churn Analysis — Framework: Customer · Revenue · Risk*

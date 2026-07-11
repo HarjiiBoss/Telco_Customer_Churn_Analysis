@@ -107,36 +107,42 @@ Column headers renamed across all tables for clarity and consistency.
 Workbook structured by analytical pillar:
 
 1. Dashboard
-2. KPI_Framework
+2. Dashboard_Customer
+3. Dashboard_Revenue
+4. Dashboard_Risk
+5. KPI_Framework
 
 — Customer —
 
-3. churn_by_contract
-4. churn_by_tenure_band
-5. churn_by_internet_service
-6. churn_by_payment_method
-7. avg_tenure_by_churn
+6. Churn_Analysis
+7. churn_by_contract
+8. churn_by_tenure_band
+9. churn_by_internet_service
+10. churn_by_payment_method
+11. avg_tenure_by_churn 
 
 — Revenue —
 
-8. avg_charges_by_churn
-9. revenue_at_risk
-10. revenue_by_contract
-11. revenue_tiers
-12. cumulative_revenue_by_tenure
+12. Revenue_Stability
+13. avg_charges_by_churn
+14. revenue_at_risk
+15. revenue_by_contract
+16. revenue_tiers
+17. cumulative_revenue_by_tenure 
 
 — Risk —
 
-13. concentration_risk
-14. internet_service_concentration
-15. high_risk_customers
+18. Segment_Risk
+19. concentration_risk
+20. internet_service_concentration
+21. high_risk_customers
 
 — Advanced (supporting analysis) —
 
-16. multi_dimension_churn
-17. estimated_ltv
-18. cohort_lag_analysis
-19. perfect_storm_churn
+22. multi_dimension_churn
+23. estimated_ltv
+24. cohort_lag_analysis
+25. perfect_storm_churn
 
 ---
 

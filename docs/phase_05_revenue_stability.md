@@ -187,5 +187,5 @@ Excel auto-generated a 6-entry legend for the LTV chart — one entry per bar �
 
 ---
 
-**Status:** Phase 5 complete — Revenue pillar analytical layer built and validated.
+**Status:** Phase 5 complete — Revenue pillar analytical layer built and validated.  
 *Project 7: Telco Customer Churn Analysis — Framework: Customer · Revenue · Risk*

@@ -1,9 +1,9 @@
 # Phase 4 — Churn & Retention Analysis
 
-**Tool:** Microsoft Excel (Mac)
-**Sheet:** `Churn_Analysis`
-**Table:** `tbl_ChurnAnalysis`
-**Charts Built:** 4
+**Tool:** Microsoft Excel (Mac)  
+**Sheet:** `Churn_Analysis`  
+**Table:** `tbl_ChurnAnalysis`  
+**Charts Built:** 4  
 **Status:** Complete ✅
 
 ---

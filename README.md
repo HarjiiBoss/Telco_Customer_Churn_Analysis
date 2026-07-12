@@ -885,46 +885,34 @@ All documentation is available inside the **documentation/** folder.
 
 # 🔮 Future Improvements
 
-Several enhancements could further extend the analytical capabilities of this project.
+Several enhancements could further extend the analytical depth of this project.
 
-## Predictive Churn Modelling
+## Deeper Customer Segmentation
 
-Develop a machine learning model capable of predicting customer churn using historical customer characteristics.
+Expand behavioural analysis using additional segmentation techniques such as:
 
-Potential algorithms include:
+- RFM Analysis (Recency, Frequency, Monetary)
+- Cohort-based retention analysis
+- Behavioural persona development
 
-- Logistic Regression
-- Random Forest
-- XGBoost
+## Cohort & Tenure-Based Analysis
 
----
+Extend the tenure-based findings into structured cohort tracking to observe:
 
-## Customer Segmentation
-
-Expand behavioural analysis by introducing customer segmentation techniques such as:
-
-- RFM Analysis
-- K-Means Clustering
-- Behavioural Personas
-
----
+- Retention curves by acquisition cohort
+- Churn timing patterns within customer lifecycle stages
+- Early-warning indicators by cohort segment
 
 ## Automated SQL Pipeline
 
 Replace manual CSV exports with an automated ETL workflow connecting SQL directly to reporting tools.
 
----
-
 ## Interactive Dashboard
 
-Develop a web-based dashboard using:
+Develop a web-based interactive version of the dashboard using:
 
-- Power BI Service
 - Tableau
 - Streamlit
-- Python Dash
-
----
 
 ## Time-Series Analysis
 

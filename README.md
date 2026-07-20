@@ -1,4 +1,4 @@
-# 📊 End-to-End Telco Customer Churn Analysis | SQL + Excel Dashboard
+# Telco Customer Churn Analysis
 
 An end-to-end customer churn analytics project using **MySQL** and **Microsoft Excel** to investigate customer retention, quantify revenue exposure, and identify structural business risks.
 

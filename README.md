@@ -14,7 +14,7 @@ The final deliverable is a four-dashboard executive reporting solution supported
 
 # 📌 Executive Summary
 
-Customer churn affects **26.54%** of the customer base, placing approximately **£1.67 million** in annualised revenue at risk. However, the analysis shows that churn is not evenly distributed across the business.
+Customer churn affects **26.54%** of the customer base, and the customers who left were paying approximately **£1.67 million** a year (annualised monthly charges). However, the analysis shows that churn is not evenly distributed across the business.
 
 The highest-risk customers are concentrated within **month-to-month contracts**, **early-tenure customers (0–12 months)**, **fiber optic subscribers**, and customers paying via **electronic check**. These segments consistently exhibit churn rates above 40%, significantly exceeding the overall average.
 
@@ -46,7 +46,7 @@ Examines customer behaviour across contract type, tenure, internet service, and 
 
 ![Revenue Dashboard](dashboard/03_revenue_dashboard.png)
 
-Measures financial impact through revenue at risk, customer value, revenue concentration, and estimated lifetime value across customer segments.
+Measures financial impact through revenue lost to churn, customer value, revenue concentration, and estimated lifetime value across customer segments.
 
 ---
 
@@ -65,11 +65,11 @@ This project was designed to answer the following business questions:
 - What is the overall customer churn rate?
 - Which customer segments experience the highest churn?
 - Which customer characteristics are most associated with churn?
-- How much monthly and annual revenue is currently at risk?
+- How much monthly and annual revenue was lost to churn?
 - Which customer groups generate the greatest financial value?
 - Which contract types provide the highest customer lifetime value?
 - How concentrated is business revenue across contracts and services?
-- Can high-risk customers be identified before they churn?
+- Which customer profile has the highest churn rate?
 - Which customer segments should be prioritised for retention initiatives?
 - What strategic actions could reduce churn and improve long-term revenue stability?
 
@@ -86,7 +86,7 @@ This project was designed to answer the following business questions:
 | Features | 21 Columns |
 | Database | MySQL |
 | Analysis Tool | Microsoft Excel |
-| Currency | GBP (£) |
+| Currency | Not stated in the source data; reported in GBP (£) for this project |
 | Project Type | End-to-End Customer Churn Analytics |
 
 ---
@@ -169,7 +169,7 @@ The data represents a static customer snapshot and is well suited for explorator
 | Project Phases | 10 |
 | Dataset Size | 7,043 Customers |
 | Churn Rate | 26.54% |
-| Annualised Revenue at Risk | £1,669,570.20 |
+| Annualised Revenue Lost to Churn | £1,669,570.20 |
 
 ---
 
@@ -285,7 +285,7 @@ It brings together the project's most important KPIs and highlights the critical
 ### Business Questions Answered
 
 - What is the current churn rate?
-- How much revenue is at risk?
+- How much revenue was lost to churn?
 - Which customer segment drives the majority of churn?
 - Which areas require immediate management attention?
 
@@ -341,7 +341,7 @@ The focus shifts from customer behaviour to commercial impact.
 
 ### Business Questions Answered
 
-- How much revenue is currently at risk?
+- How much revenue was lost to churn?
 - Which customers generate the highest financial value?
 - Which contract types maximise customer lifetime value?
 - Where should retention investment deliver the greatest return?
@@ -431,6 +431,7 @@ The SQL analysis and Excel dashboards identified several critical patterns affec
 Customers with **0–12 months** tenure recorded a:
 
 - **47.44% churn rate**
+- **55.5% of all churners** (1,037 of 1,869)
 
 Customer retention improves considerably as tenure increases, highlighting onboarding and early engagement as critical stages in the customer lifecycle.
 
@@ -458,15 +459,15 @@ making it the highest-risk payment method in the customer base.
 
 # 💰 Revenue Findings
 
-### 1. Customer churn places significant revenue at risk.
+### 1. Churned customers account for 30.50% of monthly charges.
 
 | Metric | Value |
 |---------|------:|
-| Monthly Revenue at Risk | **£139,130.85** |
-| Annualised Revenue at Risk | **£1,669,570.20** |
-| Revenue at Risk | **30.50%** |
+| Monthly Revenue Lost | **£139,130.85** |
+| Annualised Revenue Lost | **£1,669,570.20** |
+| Share of Monthly Charges | **30.50%** |
 
-Nearly one-third of recurring monthly revenue is associated with customers who churn.
+Nearly one-third of monthly charges came from customers who churned. The Excel dashboards and `revenue_at_risk.csv` keep the label "revenue at risk"; the SQL column is `monthly_revenue_lost`.
 
 ---
 
@@ -535,7 +536,7 @@ The business therefore faces both high revenue dependency and elevated churn wit
 
 ---
 
-### 3. High-risk customers can be identified before churn occurs.
+### 3. One customer profile churns at 69.53%.
 
 Customers meeting the following criteria:
 
@@ -548,7 +549,7 @@ recorded:
 - **814 customers**
 - **69.53% churn rate**
 
-These customers represent the highest-priority audience for proactive retention campaigns.
+566 of the 814 had already churned, and the profile has not been tested on new customers, so it describes past churn rather than predicting it.
 
 ---
 
@@ -603,18 +604,15 @@ Higher-paying customers contribute disproportionately to revenue loss.
 
 Retention campaigns should prioritise:
 
-- Premium customers
-- Long-tenure customers
+- Higher-paying customers early in their tenure (churners averaged 18 months of tenure)
 - Customers with increasing monthly charges
 - Customers showing multiple risk indicators
 
 ---
 
-## Recommendation 5 — Deploy Predictive Retention Programmes
+## Recommendation 5 — Test the High-Risk Profile on New Customers
 
-High-risk customers can be identified using observable customer characteristics.
-
-Businesses could implement:
+The high-risk profile uses contract type, monthly charges and tenure. If it holds on customers who joined after this data was collected, the business could implement:
 
 - Customer risk scoring
 - Automated retention workflows

@@ -646,9 +646,9 @@
         <div class="kpi-context">from churned customers</div>
       </div>
       <div class="kpi-card">
-        <div class="kpi-label">Annualised Revenue at Risk</div>
+        <div class="kpi-label">Annualised Revenue Lost</div>
         <div class="kpi-value danger">£1.67M</div>
-        <div class="kpi-context">30.50% of total revenue</div>
+        <div class="kpi-context">30.50% of monthly charges</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-label">Month-to-Month Churn</div>
@@ -677,7 +677,7 @@
     <div class="dashboard-wrap reveal">
       <img src="https://raw.githubusercontent.com/HarjiiBoss/Telco_Customer_Churn_Analysis/main/dashboard/01_executive_summary_dashboard.png" alt="Executive Summary Dashboard" />
     </div>
-    <div class="dashboard-caption reveal">01 — Executive Summary: churn, revenue at risk, and top-line risk indicators in one view</div>
+    <div class="dashboard-caption reveal">01 — Executive Summary: churn, revenue lost to churn, and top-line risk indicators in one view</div>
 
     <div class="dashboard-wrap reveal">
       <img src="https://raw.githubusercontent.com/HarjiiBoss/Telco_Customer_Churn_Analysis/main/dashboard/02_customer_dashboard.png" alt="Customer Dashboard" />
@@ -687,7 +687,7 @@
     <div class="dashboard-wrap reveal">
       <img src="https://raw.githubusercontent.com/HarjiiBoss/Telco_Customer_Churn_Analysis/main/dashboard/03_revenue_dashboard.png" alt="Revenue Dashboard" />
     </div>
-    <div class="dashboard-caption reveal">03 — Revenue: revenue at risk, customer value, and estimated lifetime value by segment</div>
+    <div class="dashboard-caption reveal">03 — Revenue: revenue lost to churn, customer value, and estimated lifetime value by segment</div>
 
     <div class="dashboard-wrap reveal">
       <img src="https://raw.githubusercontent.com/HarjiiBoss/Telco_Customer_Churn_Analysis/main/dashboard/04_risk_dashboard.png" alt="Risk Dashboard" />
@@ -711,8 +711,8 @@
 
       <div class="finding-card">
         <div class="finding-category">Tenure</div>
-        <div class="finding-title">Nearly Half of Churn Happens in the First 12 Months</div>
-        <div class="finding-body">Customers with 0–12 months tenure churn at <span class="danger">47.44%</span>, dropping to 25.5% at 13–36 months and 11.9% beyond 37 months. Early onboarding is the highest-leverage retention window.</div>
+        <div class="finding-title">More Than Half of Churn Happens in the First 12 Months</div>
+        <div class="finding-body">Customers with 0–12 months tenure make up <span class="danger">55.5%</span> of all churners (1,037 of 1,869) and churn at 47.44%, dropping to 25.5% at 13–36 months and 11.9% beyond 37 months. The first year is where most churn happens.</div>
         <div class="finding-number">02</div>
       </div>
 
@@ -741,9 +741,9 @@
     <div class="findings-grid reveal">
 
       <div class="finding-card">
-        <div class="finding-category">Revenue Exposure</div>
-        <div class="finding-title">30.50% of Monthly Revenue Is Tied to Churning Customers</div>
-        <div class="finding-body">Churn puts <strong>£139,131</strong> in monthly revenue — <span class="danger">£1.67M annualised</span> — at risk. Nearly one-third of recurring revenue is associated with customers who ultimately leave.</div>
+        <div class="finding-category">Revenue Lost</div>
+        <div class="finding-title">30.50% of Monthly Charges Came From Customers Who Churned</div>
+        <div class="finding-body">Customers who churned were paying <strong>£139,131</strong> a month — <span class="danger">£1.67M annualised</span>. That revenue has already been lost; the Excel dashboards label it revenue at risk.</div>
         <div class="finding-number">05</div>
       </div>
 
@@ -764,7 +764,7 @@
       <div class="finding-card">
         <div class="finding-category">Lifetime Value</div>
         <div class="finding-title">Churned Two-Year Customers Carried 5× the LTV of Churned M2M Customers</div>
-        <div class="finding-body">Estimated LTV for churned two-year customers is <strong>£5,316.90</strong>, versus £1,023.51 for churned month-to-month customers — contract commitment is the strongest predictor of customer value retained.</div>
+        <div class="finding-body">Estimated LTV for churned two-year customers is <strong>£5,316.90</strong>, versus £1,023.51 for churned month-to-month customers — churned customers on longer contracts had stayed longer and paid more before leaving.</div>
         <div class="finding-number">08</div>
       </div>
 
@@ -793,9 +793,9 @@
       </div>
 
       <div class="finding-card">
-        <div class="finding-category">Predictive Risk</div>
-        <div class="finding-title">814 High-Risk Customers Identified Before They Churn</div>
-        <div class="finding-body">Customers on month-to-month contracts, paying &gt;£70/month, with &lt;12 months tenure, churn at <span class="danger">69.53%</span> — more than 3× the standard customer base rate (20.92%) — and can be flagged proactively.</div>
+        <div class="finding-category">High-Risk Profile</div>
+        <div class="finding-title">814 Customers Fit a Profile With a 69.53% Churn Rate</div>
+        <div class="finding-body">Customers on month-to-month contracts, paying &gt;£70/month, with &lt;12 months tenure, churn at <span class="danger">69.53%</span> — more than 3× the 20.92% rate for everyone else. 566 of the 814 had already churned, and the profile has not been tested on new customers.</div>
         <div class="finding-number">11</div>
       </div>
 
@@ -821,7 +821,7 @@
         </div>
         <div class="insight-right">
           <div class="insight-title">Improve Early Customer Retention</div>
-          <div class="insight-text">With <strong>47.44%</strong> of churn occurring within the first 12 months, structured onboarding programmes, first-year engagement campaigns, and early satisfaction surveys represent the highest-leverage intervention window in the customer lifecycle.</div>
+          <div class="insight-text">With <strong>55.5%</strong> of churners leaving within their first 12 months, structured onboarding programmes, first-year engagement campaigns, and early satisfaction surveys represent the highest-leverage intervention window in the customer lifecycle.</div>
         </div>
       </div>
 
@@ -854,7 +854,7 @@
         </div>
         <div class="insight-right">
           <div class="insight-title">Target High-Value Customers Before Churn</div>
-          <div class="insight-text">Churned customers pay <strong>£13 more per month</strong> on average than retained customers. Retention campaigns should prioritise premium, long-tenure, and rising-spend customers — the segments with the greatest revenue at stake per account.</div>
+          <div class="insight-text">Churned customers pay <strong>£13 more per month</strong> on average than retained customers. Retention campaigns should prioritise higher-paying customers early in their tenure — churners averaged 18 months of tenure against 37.6 for customers who stayed.</div>
         </div>
       </div>
 
@@ -864,8 +864,8 @@
           <div class="insight-category">Predictive Retention</div>
         </div>
         <div class="insight-right">
-          <div class="insight-title">Deploy Predictive Retention Programmes</div>
-          <div class="insight-text">The 814-customer high-risk profile (M2M · &gt;£70/mo · &lt;12mo tenure, <span class="danger">69.53%</span> churn) demonstrates that at-risk customers can be identified using observable characteristics — enabling risk scoring, automated workflows, and early intervention ahead of churn.</div>
+          <div class="insight-title">Test the High-Risk Profile on New Customers</div>
+          <div class="insight-text">The 814-customer high-risk profile (M2M · &gt;£70/mo · &lt;12mo tenure, <span class="danger">69.53%</span> churn) uses contract type, monthly charges and tenure. Testing it on customers who joined after this data was collected would show whether it can flag churners in advance.</div>
         </div>
       </div>
 

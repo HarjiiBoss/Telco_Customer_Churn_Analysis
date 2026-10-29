@@ -1,5 +1,9 @@
 # Phase 5 — Revenue Stability Analysis
 
+> **Correction note (29 October 2026).** This record is kept as written in July 2026. Corrections made since are listed in [README → Corrections](../README.md#corrections); the current findings are in [executive_summary.md](executive_summary.md).
+>
+> - The "Revenue at Risk" labels and the chart title "Monthly Revenue at Risk vs Retained" were relabelled "Revenue Lost to Churn" and "Monthly Revenue Lost vs Retained" on 29 October 2026. The formulas and values are unchanged.
+
 **Tool:** Microsoft Excel (Mac)  
 **Sheet:** `Revenue_Stability`  
 **Tables:** `tbl_RevenueByContractAnalysis` · `tbl_RevenueByTierAnalysis` · `tbl_EstimatedLTVAnalysis`  

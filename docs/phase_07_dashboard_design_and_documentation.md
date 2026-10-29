@@ -1,5 +1,11 @@
 # Phase 7 — Dashboard Design & Documentation
 
+> **Correction note (29 October 2026).** This record is kept as written in July 2026. Corrections made since are listed in [README → Corrections](../README.md#corrections); the current findings are in [executive_summary.md](executive_summary.md).
+>
+> - Dashboard labels "Revenue at Risk" are now "Revenue Lost to Churn".
+> - "Behavioural drivers", "most likely to churn" and "strongest predictors": the dashboards show which groups have the highest churn rates. No predictive model was fitted and no causes were tested.
+> - The Revenue dashboard's second KPI card was linked to the wrong cell, and the Customer dashboard stated 47.44% as a share of churn rather than a churn rate. Both were fixed on 29 October 2026.
+
 **Tool:** Microsoft Excel (Mac)  
 **Workbook:** `Telco_Churn_Analysis.xlsx`  
 **Dashboards:** 4 (Executive Summary · Customer Analysis · Revenue Stability · Segment Risk)  

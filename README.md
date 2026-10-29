@@ -276,7 +276,7 @@ It brings together the project's most important KPIs and highlights the critical
 
 - Executive KPI cards
 - Overall churn overview
-- Revenue at risk
+- Revenue lost to churn
 - Customer concentration
 - Revenue concentration
 - High-level risk indicators
@@ -332,7 +332,7 @@ The focus shifts from customer behaviour to commercial impact.
 
 ### Dashboard Includes
 
-- Revenue at risk
+- Revenue lost to churn
 - Revenue by contract
 - Revenue by customer value tier
 - Estimated lifetime value comparison
@@ -447,7 +447,7 @@ This is substantially higher than DSL and customers without internet services, s
 
 ---
 
-### 5. Payment behaviour provides an early churn signal.
+### 5. Electronic check customers recorded the highest churn rate of any payment method.
 
 Customers paying via **Electronic Check** recorded:
 
@@ -467,7 +467,7 @@ making it the highest-risk payment method in the customer base.
 | Annualised Revenue Lost | **£1,669,570.20** |
 | Share of Monthly Charges | **30.50%** |
 
-Nearly one-third of monthly charges came from customers who churned. The Excel dashboards and `revenue_at_risk.csv` keep the label "revenue at risk"; the SQL column is `monthly_revenue_lost`.
+Nearly one-third of monthly charges came from customers who churned. The dashboards label it "revenue lost to churn". The file `revenue_at_risk.csv` and the workbook's `revenue_at_risk` data sheet keep their original names, because the Power Query connection depends on them; the SQL column is `monthly_revenue_lost`.
 
 ---
 
@@ -1003,6 +1003,18 @@ This project is licensed under the **MIT License**.
 You are welcome to use, study, or adapt the project for educational and portfolio purposes with appropriate attribution.
 
 See the **LICENSE** file for full details.
+
+---
+
+# 📝 Corrections
+
+**29 October 2026**
+
+- **Customer and revenue share by contract (charts):** the `Segment_Risk` sheet read the One year and Two year rows from each other's source rows, so three charts showed the two contracts' shares swapped. One year is 20.91% of customers and 21.01% of monthly revenue; Two year is 24.07% and 22.58%. The formulas now point at their own rows and the dashboard images have been re-exported. No figure in this README or on the project page used the swapped values.
+- **Revenue dashboard:** the second KPI card was linked to the monthly £ figure (`KPI_Framework!C9`) instead of the percentage (`C10`). Older images showed 30.50% only because Excel had not refreshed the card; it now reads from `C10`.
+- **Customer dashboard:** "47.44% of churn occurring within the first 12 months" corrected. 47.44% is the churn rate of customers in their first 12 months; they make up 55.5% of all churners.
+- **Payment method:** electronic check churn (45.29%) is about 3× the automatic payment rates (15.24–16.71%), not "more than 3×".
+- **Dashboard wording:** "revenue at risk" relabelled "revenue lost to churn"; "churn driver" replaced with "highest churn rate"; the high-risk profile is described as where churn happened (566 of the 814 had already churned), not as a list of customers to target.
 
 ---
 

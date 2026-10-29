@@ -1,0 +1,9 @@
+# macOS folder metadata
+.DS_Store
+
+# Excel lock files while a workbook is open
+~$*.xlsx
+
+# Jupyter and Python caches
+.ipynb_checkpoints/
+__pycache__/

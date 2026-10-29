@@ -1011,6 +1011,7 @@ See the **LICENSE** file for full details.
 **29 October 2026**
 
 - **Customer and revenue share by contract (charts):** the `Segment_Risk` sheet read the One year and Two year rows from each other's source rows, so three charts showed the two contracts' shares swapped. One year is 20.91% of customers and 21.01% of monthly revenue; Two year is 24.07% and 22.58%. The formulas now point at their own rows and the dashboard images have been re-exported. No figure in this README or on the project page used the swapped values.
+- **Revenue dashboard:** the second KPI card was linked to the monthly £ figure (`KPI_Framework!C9`) instead of the percentage (`C10`). Older images showed 30.50% only because Excel had not refreshed the card; it now reads from `C10`.
 - **Customer dashboard:** "47.44% of churn occurring within the first 12 months" corrected. 47.44% is the churn rate of customers in their first 12 months; they make up 55.5% of all churners.
 - **Payment method:** electronic check churn (45.29%) is about 3× the automatic payment rates (15.24–16.71%), not "more than 3×".
 - **Dashboard wording:** "revenue at risk" relabelled "revenue lost to churn"; "churn driver" replaced with "highest churn rate"; the high-risk profile is described as where churn happened (566 of the 814 had already churned), not as a list of customers to target.

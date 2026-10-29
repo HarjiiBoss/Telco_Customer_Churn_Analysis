@@ -1,0 +1,10 @@
+# .figures-allow — figures checked by hand that tools/check_figures.py cannot find in the outputs.
+# One figure per line, written as it appears in the text, then '#' and how it was derived.
+# List a figure only after checking the calculation. A typed or drifted figure is fixed, not listed.
+
+7,043    # total customers: churn_by_contract.csv total_customers 3,875 + 1,473 + 1,695
+1,869    # churned customers: churn_by_contract.csv churned 1,655 + 166 + 48
+55.5%    # share of churners in the 0-12 month band: churn_by_tenure_band.csv 1,037 / 1,869 = 55.48%
+£1.67    # README "£1.67 million": revenue_at_risk.csv monthly_revenue_lost 139,130.85 x 12 = 1,669,570.20
+3.3×     # high-risk vs all other customers: high_risk_customers.csv 69.53% / 20.92% = 3.32
+2.7×     # revenue_by_contract.csv avg_revenue_per_customer, Two year 3,728.93 / Month-to-month 1,369.25 = 2.72 (table excludes the 11 customers with no TotalCharges, phase_00_setup.md)

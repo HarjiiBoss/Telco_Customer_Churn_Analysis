@@ -1,5 +1,12 @@
 # Phase 8 — Business Insights & Recommendations
 
+> **Correction note (29 October 2026).** This record is kept as written in July 2026. Corrections made since are listed in [README → Corrections](../README.md#corrections); the current findings are in [executive_summary.md](executive_summary.md).
+>
+> - "Drive churn", "drivers" and "signals churn risk": these insights compare churn rates between groups and do not show causes.
+> - "Place £1.67 million in annualised revenue at risk": £1.67M is the annualised monthly charges of customers who had already churned. It is revenue lost, not a forecast.
+> - "Insight 3 — High-risk customers are identifiable before churn" and the payment-method "early behavioural indicator": the profile was found by looking at who had churned (566 of the 814 had already left) and has not been tested on active customers.
+> - The executive summary carries the corrected insights and recommendations.
+
 **Objective**
 
 Translate SQL and dashboard findings into actionable business recommendations. This phase bridges technical analysis and business decision-making by identifying the key drivers of customer churn, quantifying their financial impact, and proposing evidence-based actions to improve retention and reduce revenue risk.

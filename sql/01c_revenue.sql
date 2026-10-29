@@ -1,6 +1,6 @@
 -- Project 7: Telco Customer Churn Analysis
 -- Phase 1C: Revenue Pillar
--- Purpose: Quantify revenue at risk and identify where revenue is concentrated
+-- Purpose: Quantify revenue lost to churn (monthly charges of churned customers) and where revenue is concentrated
 
 USE telco_churn;
 
@@ -14,7 +14,7 @@ SELECT
 FROM customers
 GROUP BY Churn;
 
--- Query 2: Revenue at risk
+-- Query 2: Revenue lost to churn (the output column keeps its original name, revenue_at_risk_pct)
 SELECT
     ROUND(SUM(CASE WHEN Churn = 'Yes' THEN MonthlyCharges ELSE 0 END), 2) AS monthly_revenue_lost,
     ROUND(SUM(CASE WHEN Churn = 'No'  THEN MonthlyCharges ELSE 0 END), 2) AS monthly_revenue_retained,

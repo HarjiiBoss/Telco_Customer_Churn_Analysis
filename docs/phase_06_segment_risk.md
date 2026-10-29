@@ -1,5 +1,9 @@
 # Phase 6 — Segment & Concentration Risk Analysis
 
+> **Correction note (29 October 2026).** This record is kept as written in July 2026. Corrections made since are listed in [README → Corrections](../README.md#corrections); the current findings are in [executive_summary.md](executive_summary.md).
+>
+> - On the `Segment_Risk` sheet, the rows labelled One year and Two year read each other's source rows, so the three contract-share charts showed the two contracts swapped. The table below lists the correct values; the formulas were fixed on 29 October 2026.
+
 **Tool:** Microsoft Excel (Mac)  
 **Sheet:** `Segment_Risk`  
 **Tables:** `tbl_ContractConcentrationRisk` · `tbl_InternetServiceRisk` · `tbl_HighRiskProfile`  

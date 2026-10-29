@@ -1,5 +1,10 @@
 # Phase 3 — KPI Design & Framework
 
+> **Correction note (29 October 2026).** This record is kept as written in July 2026. Corrections made since are listed in [README → Corrections](../README.md#corrections); the current findings are in [executive_summary.md](executive_summary.md).
+>
+> - KPIs 5 and 6, "Monthly Revenue at Risk" and "Revenue at Risk (%)", were relabelled "Monthly Revenue Lost to Churn" and "Revenue Lost to Churn (% of monthly charges)" in the workbook on 29 October 2026. The values are unchanged.
+> - "Primary churn driver": the analysis shows month-to-month contracts have the highest churn rate, not that they cause churn.
+
 **Tool:** Microsoft Excel (Mac)  
 **Sheet:** `KPI_Framework`  
 **KPIs Defined:** 10  

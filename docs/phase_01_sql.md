@@ -1,5 +1,11 @@
 # Phase 1 — SQL Extraction & Analysis
 
+> **Correction note (29 October 2026).** This record is kept as written in July 2026. Corrections made since are listed in [README → Corrections](../README.md#corrections); the current findings are in [executive_summary.md](executive_summary.md).
+>
+> - "Contract structure is the strongest predictor of churn": no predictive model was fitted. Month-to-month contracts have the highest churn rate of the groups compared.
+> - "High-risk customers are clearly identifiable before churn occurs": 566 of the 814 customers in the profile had already churned, and the profile has not been tested on active customers. It describes where churn happened.
+> - "Revenue at risk" here means monthly charges paid by customers who had already churned; it is now called revenue lost to churn.
+
 **Tool:** MySQL Workbench  
 **Schema:** telco_churn  
 **Table:** customers  

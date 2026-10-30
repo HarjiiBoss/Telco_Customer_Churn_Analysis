@@ -8,10 +8,11 @@ Central list of the project's documents. The project was run in eleven phases be
 
 | Document | Purpose | Status | Last Updated |
 |----------|---------|--------|--------------|
-| [README.md](../README.md) | Results, approach, reproducibility, corrections and published surfaces | ☑ Complete | 2026-10-29 |
+| [README.md](../README.md) | Results, approach, reproducibility and corrections | ☑ Complete | 2026-10-30 |
 | [PROJECT_INFO.md](../PROJECT_INFO.md) | Project charter, written retrospectively: question, scope, metric definitions, risks, assumptions | ☑ Complete | 2026-10-29 |
 | [executive_summary.md](executive_summary.md) | Findings, recommendations and limitations for decision-makers | ☑ Complete | 2026-10-29 |
 | [data_dictionary.md](data_dictionary.md) | Every table and column in the workbook | ☑ Complete (moved from the repository root on 2026-10-29) | 2026-10-29 |
+| [published_surfaces.md](published_surfaces.md) | Every place the findings appear outside this repository (moved from the README on 2026-10-30) | ☑ Complete | 2026-10-30 |
 | [index.html](index.html) | Project page, published at taofeeksalami.com/Telco_Customer_Churn_Analysis | ☑ Complete | 2026-10-29 |
 | [../.figures-allow](../.figures-allow) | Derived figures checked by hand, with their calculations | ☑ Complete | 2026-10-29 |
 
